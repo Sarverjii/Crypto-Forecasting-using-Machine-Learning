@@ -82,7 +82,7 @@ def graph(asset_name, pred, expected, plot_type='train'):
 
 # Load and preprocess the dataset
 df = pd.read_csv(
-    'data/supplemental_train.csv',
+    'data/train.csv',
     na_values=['null'],
     index_col='timestamp',
     parse_dates=True
@@ -154,7 +154,7 @@ if len(sys.argv) > 1:
                 lstm.compile(loss='mean_squared_error', optimizer='adam')
                 
                 # Train the model
-                lstm.fit(trainX, y_train, epochs=5, batch_size=8, verbose=1, shuffle=False)
+                lstm.fit(trainX, y_train, epochs=20, batch_size=8, verbose=1, shuffle=False)
 
                 # Evaluate on test set
                 pred = lstm.predict(testX)
